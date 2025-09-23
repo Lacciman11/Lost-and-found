@@ -8,6 +8,7 @@ const rateLimiter = require("./src/middlewares/rateLimiter");
 const errorHandler = require("./src/middlewares/errorHandler");
 const lostItemRoutes = require("./src/routes/lostItemRoutes");
 const foundItemRoutes = require("./src/routes/foundItemRoutes")
+const itemsRoutes = require("./src/routes/getItems.js");
  
 // Routes
 const authRoutes = require("./src/routes/authRoute");
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/lost-items", lostItemRoutes);
 app.use("/api/found-items", foundItemRoutes);
+app.use("/api/items", itemsRoutes);
 
 // Error handler
 app.use(errorHandler);
