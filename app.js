@@ -22,6 +22,7 @@ app.use(rateLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/lost-items", lostItemRoutes);
