@@ -83,10 +83,27 @@ const searchItems = async (req, res) => {
       res.status(500).json({ error: "Server error", details: error.message });
     }
   };
+
+  const getItems = async (req, res) => {
+    try {
+      const lostItems = await Lost.find();
+      const foundItems = await Found.find();
+  
+      // Send in the requested format
+      res.status(200).json([
+        { lost: lostItems },
+        { found: foundItems }
+      ]);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  };
   
   
 module.exports = {
   getRecentItems,
   getRecentActivities,
   searchItems,
+  getItems,
 };
